@@ -25,10 +25,43 @@ impl Deck {
         let deck = Deck { cards };
         deck
     }
+
+    fn get_hearts(&self) -> Deck {
+        let cloned = self.cards.clone();
+        let mut hearts_cards = vec![];
+        for hearts in cloned {
+            if hearts.contains("Hearts") {
+                hearts_cards.push(hearts);
+            }
+        }
+        let hearts_deck = Deck {
+            cards: hearts_cards,
+        };
+
+        return hearts_deck;
+    }
+
+    fn get_diamonds(&self) -> Deck {
+        let cloned = self.cards.clone();
+        let mut diamonds_cards = vec![];
+
+        for diamond in cloned {
+            if diamond.contains("Diamonds") {
+                diamonds_cards.push(diamond);
+            }
+        }
+
+        let diamonds_deck = Deck {
+            cards: diamonds_cards,
+        };
+        diamonds_deck
+    }
 }
 
 fn main() {
     let deck = Deck::new_deck();
-
-    println!("Hello, world! {:#?}", deck);
+    let heart_deck = deck.get_hearts();
+    let diamond_deck = deck.get_diamonds();
+    println!("Hearts: {:#?}", heart_deck);
+    println!("Diamonds: {:#?}", diamond_deck);
 }
