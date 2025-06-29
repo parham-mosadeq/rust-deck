@@ -57,9 +57,8 @@ impl Deck {
         self.cards.shuffle(&mut rngs);
     }
 
-    fn deal(&mut self, split_num: usize) -> Deck {
-        let cards = self.cards.split_off(split_num);
-        Deck { cards }
+    fn deal(&mut self, split_num: usize) -> Vec<String> {
+        self.cards.split_off(split_num)
     }
 }
 
@@ -68,8 +67,11 @@ fn main() {
     let mut heart_deck = deck.get_hearts();
     // let diamond_deck = deck.get_diamonds();
     deck.shuffle();
+    deck.deal(13);
+
     heart_deck.shuffle();
-    deck.deal(5);
+    heart_deck.deal(7);
+
     println!("Here is Shuffled Deck: {:#?}", deck);
-    // println!("Here is Shuffled Hearts Deck: {:#?}", heart_deck);
+    println!("Here is Shuffled and Dealt Hearts Deck: {:#?}", heart_deck);
 }
