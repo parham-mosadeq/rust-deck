@@ -28,33 +28,26 @@ impl Deck {
 
     fn get_hearts(&self) -> Deck {
         let cloned = self.cards.clone();
-        let mut hearts_cards = vec![];
+        let mut cards = vec![];
         for hearts in cloned {
             if hearts.contains("Hearts") {
-                hearts_cards.push(hearts);
+                cards.push(hearts);
             }
         }
-        let hearts_deck = Deck {
-            cards: hearts_cards,
-        };
-
-        return hearts_deck;
+        Deck { cards }
     }
 
     fn get_diamonds(&self) -> Deck {
         let cloned = self.cards.clone();
-        let mut diamonds_cards = vec![];
+        let mut cards = vec![];
 
         for diamond in cloned {
             if diamond.contains("Diamonds") {
-                diamonds_cards.push(diamond);
+                cards.push(diamond);
             }
         }
 
-        let diamonds_deck = Deck {
-            cards: diamonds_cards,
-        };
-        diamonds_deck
+        Deck { cards }
     }
 }
 
